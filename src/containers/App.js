@@ -1,6 +1,6 @@
 import React from 'react';
-import uuid from 'uuid';
 import style from './App.css';
+import uuid from 'uuid';
 
 class App extends React.Component {
     constructor(props){
@@ -9,37 +9,31 @@ class App extends React.Component {
             data: []
         };
     }
-    addTodo(val){console.log(val);
+    addTodo(event){
+        event.preventDefault();
+        console.log(event);
         const todo = {
-            text: val,
+            text: eventy.target.value,
             id: uuid.v4(),
         };
-        console.log('todo ',todo);console.log('this.state.data ',this.state.data);
         const data = [...this.state.data, todo];
         this.setState({data});
         const Title = props => <h1>{props.title}</h1>
+        console.log(todo);
     }
     removeTodo(id) {
-    const remainder = this.state.data.filter(todo => todo.id !== id);
-    this.setState({data: remainder});
+        const remainder = this.state.data.filter(todo => todo.id !== id);
+        this.setState({data: remainder});
     }
-render() {
-    return (
-        <div>
-            <form>
-              <input
-                type="text"
-                id="title"
-                ref="title"
-                onChange={this.value}/>
-              <label onClick={this.addTodo}>Add title</label>
-              <label onClick={this.removeTodo}>Remove title</label>
+    render() {
+        return (
+        
+            <form className={style.TodoApp} onSubmit={(event)=>{this.addTodo}}>
+                <input type="text" id="title" />
+                <button>Add title</button>
             </form>
-            <div>
-                {this.Title}
-            </div>
-        </div>
-    );
+        
+        );
     }
 }
 
