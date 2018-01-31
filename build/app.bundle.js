@@ -20186,68 +20186,139 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+var Title = function (_React$Component) {
+    _inherits(Title, _React$Component);
+
+    function Title() {
+        _classCallCheck(this, Title);
+
+        return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
+    }
+
+    _createClass(Title, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'h1',
+                null,
+                ' ',
+                this.props.content,
+                ' '
+            );
+        }
+    }]);
+
+    return Title;
+}(_react2.default.Component);
+
+var App = function (_React$Component2) {
+    _inherits(App, _React$Component2);
 
     function App(props) {
         _classCallCheck(this, App);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+        var _this2 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-        _this.state = {
-            data: [],
-            currentValue: ''
+        _this2.state = {
+            todos: [],
+            currentText: ''
         };
-        return _this;
+        return _this2;
     }
 
     _createClass(App, [{
-        key: 'Addtodo',
-        value: function Addtodo(currentValue) {
-            console.log('currentValue ', this.state.currentValue);
+        key: 'addTodo',
+        value: function addTodo() {
             var todo = {
-                text: this.state.currentValue,
+                text: this.state.currentText,
                 id: _uuid2.default.v4()
             };
-            var data = [].concat(_toConsumableArray(this.state.data), [todo]);
-            this.setState({ data: data });
-            var Title = function Title(props) {
-                return _react2.default.createElement(
-                    'h1',
-                    null,
-                    props.title
-                );
-            };
-            console.log('todo ', todo);
-        }
-    }, {
-        key: 'handlePress',
-        value: function handlePress(event) {
-            console.log('event.target.value ', event.target.value);
-            this.setState({ currentValue: event.target.value });
-            console.log('currentValue ', this.state.currentValue);
+
+            this.setState({
+                todos: [].concat(_toConsumableArray(this.state.todos), [todo])
+            });
         }
     }, {
         key: 'removeTodo',
         value: function removeTodo(id) {
-            var remainder = this.state.data.filter(function (todo) {
+            var reminder = this.state.todos.filter(function (todo) {
                 return todo.id !== id;
             });
-            this.setState({ data: remainder });
+
+            this.setState({
+                todos: reminder
+            });
+        }
+    }, {
+        key: 'handlePress',
+        value: function handlePress(ev) {
+            this.setState({
+                currentText: ev.target.value
+            });
+        }
+    }, {
+        key: 'renderTodo',
+        value: function renderTodo(todo) {
+            var _this3 = this;
+
+            return _react2.default.createElement(
+                'li',
+                { key: todo.id },
+                ' ',
+                todo.text,
+                ' ',
+                _react2.default.createElement(
+                    'button',
+                    { type: 'button',
+                        onClick: function onClick() {
+                            _this3.removeTodo(todo.id);
+                        } },
+                    ' Usu\u0144 '
+                )
+            );
         }
     }, {
         key: 'render',
         value: function render() {
+            var _this4 = this;
+
             return _react2.default.createElement(
-                'form',
-                { className: _App2.default.TodoApp, onSubmit: this.Addtodo.bind(this) },
-                _react2.default.createElement('input', { type: 'text', id: 'title', onChange: this.handlePress.bind(this) }),
+                'div',
+                null,
                 _react2.default.createElement(
-                    'button',
-                    null,
-                    'Add title'
+                    'form',
+                    { className: _App2.default.TodoApp, onSubmit: function onSubmit(event) {
+                            _this4.addTodo;
+                        } },
+                    _react2.default.createElement(
+                        'h1',
+                        null,
+                        ' Lista rzeczy do zrobienia '
+                    ),
+                    ' ',
+                    _react2.default.createElement('input', { type: 'text',
+                        id: 'title',
+                        onChange: this.handlePress.bind(this)
+                    }),
+                    ' ',
+                    _react2.default.createElement(
+                        'button',
+                        { type: 'button',
+                            onClick: this.addTodo.bind(this) },
+                        ' Add title '
+                    ),
+                    ' '
                 ),
-                _react2.default.createElement(App.Addtodo, { title: 'this.state.date' })
+                _react2.default.createElement(
+                    'ul',
+                    null,
+                    ' ',
+                    this.state.todos.map(function (todo) {
+                        return _this4.renderTodo(todo);
+                    }),
+                    ' '
+                ),
+                ' '
             );
         }
     }]);
