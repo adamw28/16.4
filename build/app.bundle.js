@@ -20186,19 +20186,42 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+var Title = function (_React$Component) {
+    _inherits(Title, _React$Component);
+
+    function Title() {
+        _classCallCheck(this, Title);
+
+        return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
+    }
+
+    _createClass(Title, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'h1',
+                null,
+                this.props.content
+            );
+        }
+    }]);
+
+    return Title;
+}(_react2.default.Component);
+
+var App = function (_React$Component2) {
+    _inherits(App, _React$Component2);
 
     function App(props) {
         _classCallCheck(this, App);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+        var _this2 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-        _this.state = {
+        _this2.state = {
             data: [],
             currentValue: ''
         };
-        return _this;
+        return _this2;
     }
 
     _createClass(App, [{
@@ -20224,7 +20247,9 @@ var App = function (_React$Component) {
         key: 'handlePress',
         value: function handlePress(event) {
             console.log('event.target.value ', event.target.value);
-            this.setState({ currentValue: event.target.value });
+            this.setState({
+                currentValue: event.target.value
+            });
             console.log('currentValue ', this.state.currentValue);
         }
     }, {
@@ -20241,13 +20266,13 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 'form',
                 { className: _App2.default.TodoApp, onSubmit: this.Addtodo.bind(this) },
+                _react2.default.createElement(Title, { content: 'Lista rzeczy do zrobienia' }),
                 _react2.default.createElement('input', { type: 'text', id: 'title', onChange: this.handlePress.bind(this) }),
                 _react2.default.createElement(
                     'button',
-                    null,
-                    'Add title'
-                ),
-                _react2.default.createElement(App.Addtodo, { title: 'this.state.date' })
+                    { type: 'button' },
+                    'Add Todo'
+                )
             );
         }
     }]);
@@ -20256,6 +20281,8 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+// <App.Addtodo title='this.state.date'/>
 
 /***/ }),
 /* 30 */
@@ -20297,11 +20324,11 @@ exports = module.exports = __webpack_require__(32)(false);
 
 
 // module
-exports.push([module.i, "._1yWMblMhcoxIcFRQVWQUoB {\r\n    background-color: #F5F5F5;\r\n    color: #222;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    align-content: center;\r\n    width: 100vw;\r\n    height: 100vh;\r\n}", ""]);
+exports.push([module.i, "._2xo2biYT1s9XQmHhT2Utv5 {\r\n    background-color: #e6e6e6;\r\n    color: #222;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    align-content: center;\r\n    width: 100vw;\r\n    height: 100vh;\r\n}", ""]);
 
 // exports
 exports.locals = {
-	"TodoApp": "_1yWMblMhcoxIcFRQVWQUoB"
+	"TodoApp": "_2xo2biYT1s9XQmHhT2Utv5"
 };
 
 /***/ }),
