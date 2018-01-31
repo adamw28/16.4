@@ -20195,18 +20195,18 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         _this.state = {
-            data: []
+            data: [],
+            currentValue: ''
         };
         return _this;
     }
 
     _createClass(App, [{
-        key: 'addTodo',
-        value: function addTodo(event) {
-            event.preventDefault();
-            console.log(event);
+        key: 'Addtodo',
+        value: function Addtodo(currentValue) {
+            console.log('currentValue ', this.state.currentValue);
             var todo = {
-                text: eventy.target.value,
+                text: this.state.currentValue,
                 id: _uuid2.default.v4()
             };
             var data = [].concat(_toConsumableArray(this.state.data), [todo]);
@@ -20218,7 +20218,14 @@ var App = function (_React$Component) {
                     props.title
                 );
             };
-            console.log(todo);
+            console.log('todo ', todo);
+        }
+    }, {
+        key: 'handlePress',
+        value: function handlePress(event) {
+            console.log('event.target.value ', event.target.value);
+            this.setState({ currentValue: event.target.value });
+            console.log('currentValue ', this.state.currentValue);
         }
     }, {
         key: 'removeTodo',
@@ -20231,19 +20238,16 @@ var App = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
-
             return _react2.default.createElement(
                 'form',
-                { className: _App2.default.TodoApp, onSubmit: function onSubmit(event) {
-                        _this2.addTodo;
-                    } },
-                _react2.default.createElement('input', { type: 'text', id: 'title' }),
+                { className: _App2.default.TodoApp, onSubmit: this.Addtodo.bind(this) },
+                _react2.default.createElement('input', { type: 'text', id: 'title', onChange: this.handlePress.bind(this) }),
                 _react2.default.createElement(
                     'button',
                     null,
                     'Add title'
-                )
+                ),
+                _react2.default.createElement(App.Addtodo, { title: 'this.state.date' })
             );
         }
     }]);
