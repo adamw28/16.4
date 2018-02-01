@@ -20368,7 +20368,7 @@ exports = module.exports = __webpack_require__(32)(false);
 
 
 // module
-exports.push([module.i, "._1yWMblMhcoxIcFRQVWQUoB {\r\n    background-color: #F5F5F5;\r\n    color: #222;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    align-content: center;\r\n    width: 50vw;\r\n    height: 50vh;\r\n}", ""]);
+exports.push([module.i, "._1yWMblMhcoxIcFRQVWQUoB {\r\n    background-color: #F5F5F5;\r\n    color: #222;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    align-content: center;\r\n    width: 50vw;\r\n    height: 50vh;\r\n}\r\n", ""]);
 
 // exports
 exports.locals = {
